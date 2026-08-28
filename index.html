@@ -1,0 +1,1031 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>MyGail — Get Early Access</title>
+<meta name="description" content="MyGail is the calm, steady voice in your kitchen — real recipes from what's actually in your fridge, no shame, no spreadsheets. Get early access.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,500&family=Karla:wght@500;600;700;800&display=swap" rel="stylesheet">
+<!--
+  Analytics: not wired up yet. Once you pick a tool (Plausible is a good
+  privacy-friendly default that pairs well with a waitlist page), drop its
+  snippet here. Example for Plausible:
+  <script defer data-domain="mygail.com" src="https://plausible.io/js/script.js"></script>
+-->
+<style>
+  :root {
+    --ground: #F5F0E8;
+    --surface: #FDFBF7;
+    --surface-dim: #F1EAE0;
+    --border: #E3DED4;
+    --border-soft: #EAE4D9;
+    --ink: #3F3D34;
+    --ink-soft: #6B5A4A;
+    --ink-faint: #948573;
+    --sage: #B3DDBA;
+    --sage-border: #9AC5A2;
+    --sage-deep: #21412C;
+    --moss: #4A6741;
+    --honey: #C79A45;
+    --honey-soft: #F1E4C8;
+    --dinner-fill: #FFE8E3;
+    --dinner-border: #EDC2B8;
+    --shadow-soft: 0 18px 40px -28px rgba(63, 61, 52, 0.35);
+    --radius-card: 20px;
+    --radius-pill: 999px;
+    --max: 1160px;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    margin: 0;
+    background: var(--ground);
+    color: var(--ink);
+    font-family: 'Karla', -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, svg, video { display: block; max-width: 100%; }
+
+  a { color: inherit; }
+
+  h1, h2, h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-weight: 600;
+    color: var(--ink);
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  .wrap {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .eyebrow {
+    font-family: 'Karla', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--moss);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .eyebrow .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--honey);
+  }
+
+  /* ---------- header ---------- */
+  header.site {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(245, 240, 232, 0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border-soft);
+  }
+  header.site .bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 28px;
+  }
+  .wordmark {
+    font-family: 'Fraunces', serif;
+    font-weight: 600;
+    font-size: 21px;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--ink);
+  }
+  .wordmark svg { width: 22px; height: 22px; }
+  nav.site-nav {
+    display: flex;
+    gap: 28px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+  }
+  nav.site-nav a {
+    text-decoration: none;
+    color: var(--ink-soft);
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  nav.site-nav a:hover, nav.site-nav a:focus-visible {
+    color: var(--sage-deep);
+    border-color: var(--sage-border);
+  }
+  @media (max-width: 620px) {
+    nav.site-nav { display: none; }
+  }
+
+  /* ---------- hero ---------- */
+  .hero {
+    padding: 64px 0 40px;
+  }
+  .hero-head {
+    max-width: 640px;
+    margin-bottom: 44px;
+  }
+  .hero-head .eyebrow { margin-bottom: 18px; }
+  .hero-head h1 {
+    font-size: clamp(34px, 5.4vw, 54px);
+    line-height: 1.06;
+    letter-spacing: -0.015em;
+  }
+  .hero-head h1 em {
+    font-style: italic;
+    font-weight: 500;
+    color: var(--sage-deep);
+  }
+  .hero-head p.sub {
+    margin-top: 20px;
+    font-size: 17px;
+    color: var(--ink-soft);
+    max-width: 46ch;
+  }
+
+  .hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: 40px;
+    align-items: start;
+  }
+  @media (max-width: 880px) {
+    .hero-grid { grid-template-columns: 1fr; gap: 32px; }
+  }
+
+  /* ---------- phone demo ---------- */
+  .phone-stage {
+    display: flex;
+    justify-content: center;
+  }
+  .phone {
+    width: 100%;
+    max-width: 340px;
+    border-radius: 38px;
+    background: linear-gradient(180deg, #ffffff, #efe9de);
+    border: 1px solid var(--border);
+    padding: 14px;
+    box-shadow: var(--shadow-soft);
+  }
+  .phone-screen {
+    background: var(--ground);
+    border-radius: 26px;
+    padding: 18px 16px 20px;
+    min-height: 430px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  .phone-notch {
+    align-self: center;
+    width: 84px;
+    height: 6px;
+    border-radius: var(--radius-pill);
+    background: rgba(63,61,52,0.14);
+    margin-bottom: 14px;
+  }
+  .phone-header {
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    margin-bottom: 16px;
+  }
+  .phone-avatar {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid #B1D8B7;
+    background: #fff;
+    flex-shrink: 0;
+  }
+  .phone-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .phone-header .name {
+    font-weight: 800;
+    font-size: 13.5px;
+    color: var(--ink);
+  }
+  .phone-header .status {
+    font-size: 11px;
+    color: var(--moss);
+    font-weight: 600;
+  }
+
+  .thread {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  /* Bubble shape, colors, and side tail match the real ChatScreen exactly:
+     white fill, a 2px identity-colored border (sage for Gail, blue for the
+     user), uniform rounded corners, and a small triangular tail — not the
+     generic solid-fill/cut-corner bubble pattern most chat mockups use. */
+  .bubble {
+    position: relative;
+    max-width: 84%;
+    padding: 10px 13px;
+    border-radius: 20px;
+    border-width: 2px;
+    border-style: solid;
+    background: #FFFFFF;
+    color: #334155;
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.42;
+    opacity: 0;
+    transform: translateY(6px);
+    animation: rise 0.38s ease forwards;
+    box-shadow: 0 2px 8px rgba(63, 61, 52, 0.08);
+  }
+  @keyframes rise {
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .bubble.user {
+    align-self: flex-end;
+    border-color: #9EC4D1;
+    margin-right: 8px;
+  }
+  .bubble.gail {
+    align-self: flex-start;
+    border-color: #B1D8B7;
+    margin-left: 8px;
+  }
+  .bubble.gail::before, .bubble.gail::after,
+  .bubble.user::before, .bubble.user::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    width: 0;
+    height: 0;
+    border-top: 6px solid transparent;
+    border-bottom: 6px solid transparent;
+  }
+  .bubble.gail::before { left: -8px; margin-top: -6px; border-right: 8px solid #B1D8B7; }
+  .bubble.gail::after { left: -6px; margin-top: -5px; border-top-width: 5px; border-bottom-width: 5px; border-right: 7px solid #FFFFFF; }
+  .bubble.user::before { right: -8px; margin-top: -6px; border-left: 8px solid #9EC4D1; }
+  .bubble.user::after { right: -6px; margin-top: -5px; border-top-width: 5px; border-bottom-width: 5px; border-left: 7px solid #FFFFFF; }
+  .bubble.gail .cursor {
+    display: inline-block;
+    width: 2px;
+    height: 12px;
+    background: var(--ink-faint);
+    margin-left: 2px;
+    vertical-align: -2px;
+    animation: blink 0.9s step-end infinite;
+  }
+  @keyframes blink { 50% { opacity: 0; } }
+
+  /* Recipe card mirrors ChatRecipeCard's real cream/tan surface, not a
+     generic accent-colored card. */
+  .recipe-card {
+    align-self: flex-start;
+    max-width: 84%;
+    background: #FFFDF9;
+    border: 1px solid #E2D8CB;
+    border-radius: 16px;
+    padding: 11px 13px;
+    margin-left: 8px;
+    opacity: 0;
+    transform: translateY(6px) scale(0.97);
+    animation: rise 0.42s ease forwards;
+  }
+  .recipe-card .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #4F8A47;
+    background: #E4F4E0;
+    padding: 2px 8px;
+    border-radius: 999px;
+    margin-bottom: 6px;
+  }
+  .recipe-card .name {
+    font-weight: 800;
+    font-size: 15px;
+    color: #334155;
+    margin-bottom: 5px;
+  }
+  .recipe-card .meta {
+    display: flex;
+    gap: 10px;
+    font-size: 11px;
+    font-weight: 700;
+    color: #64748B;
+  }
+
+  .phone-input {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    padding: 9px 8px 9px 15px;
+  }
+  .phone-input .ph {
+    flex: 1;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--ink-faint);
+  }
+  .phone-input .send {
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    background: var(--sage-deep);
+    flex-shrink: 0;
+  }
+
+  /* ---------- signup card ---------- */
+  .signup-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-card);
+    padding: 32px 30px 28px;
+    height: 100%;
+  }
+  .signup-card h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+  .signup-card p.lead {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    margin-bottom: 22px;
+    max-width: 40ch;
+  }
+  form.signup {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .field-row {
+    display: flex;
+    gap: 10px;
+  }
+  input[type="email"], input.name-field {
+    flex: 1;
+    width: 100%;
+    font-family: 'Karla', sans-serif;
+    font-size: 14.5px;
+    font-weight: 600;
+    color: var(--ink);
+    background: var(--ground);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    padding: 13px 18px;
+    outline: none;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  input[type="email"]::placeholder, input.name-field::placeholder { color: var(--ink-faint); font-weight: 500; }
+  input[type="email"]:focus-visible, input.name-field:focus-visible {
+    border-color: var(--sage-border);
+    box-shadow: 0 0 0 3px rgba(154, 197, 162, 0.35);
+  }
+  button.cta {
+    font-family: 'Karla', sans-serif;
+    font-weight: 800;
+    font-size: 14.5px;
+    color: var(--sage-deep);
+    background: var(--sage);
+    border: 1px solid var(--sage-border);
+    border-radius: var(--radius-pill);
+    padding: 13px 22px;
+    cursor: pointer;
+    transition: transform 0.12s ease, background 0.15s ease;
+  }
+  button.cta:hover { background: #A5D4AD; }
+  button.cta:active { transform: scale(0.98); }
+  button.cta:focus-visible { outline: 3px solid var(--sage-deep); outline-offset: 2px; }
+  button.cta:disabled { opacity: 0.6; cursor: default; }
+
+  .fine-print {
+    margin-top: 14px;
+    font-size: 12px;
+    color: var(--ink-faint);
+    line-height: 1.5;
+  }
+
+  .form-note {
+    margin-top: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+  .form-note.ok { color: var(--moss); }
+  .form-note.err { color: #8A4A3A; }
+
+  .signup-divider {
+    margin: 22px 0;
+    border-top: 1px dashed var(--border);
+  }
+
+  .signup-facts {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .signup-facts .fact {
+    display: flex;
+    gap: 9px;
+    align-items: flex-start;
+    font-size: 13px;
+    color: var(--ink-soft);
+  }
+  .signup-facts svg { flex-shrink: 0; margin-top: 2px; width: 15px; height: 15px; color: var(--moss); }
+
+  /* ---------- principles ---------- */
+  .principles {
+    padding: 88px 0 70px;
+    border-top: 1px solid var(--border-soft);
+  }
+  .section-head {
+    max-width: 620px;
+    margin-bottom: 40px;
+  }
+  .section-head .eyebrow { margin-bottom: 16px; }
+  .section-head h2 {
+    font-size: clamp(28px, 3.6vw, 38px);
+    letter-spacing: -0.01em;
+  }
+  .section-head p {
+    margin-top: 14px;
+    color: var(--ink-soft);
+    font-size: 15.5px;
+    max-width: 52ch;
+  }
+
+  .principle-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 16px;
+  }
+  .principle-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 20px;
+    position: relative;
+  }
+  .principle-card::before {
+    content: "";
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--honey);
+    opacity: 0.9;
+  }
+  .principle-card h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    padding-right: 14px;
+  }
+  .principle-card p {
+    font-size: 13.5px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin: 0;
+  }
+  .principle-source {
+    margin-top: 22px;
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    font-style: italic;
+    font-family: 'Fraunces', serif;
+  }
+
+  /* ---------- demo video ---------- */
+  .demo {
+    padding: 10px 0 70px;
+  }
+  .demo-frame {
+    background: var(--surface-dim);
+    border: 1px solid var(--border);
+    border-radius: 26px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: 1fr minmax(0, 560px);
+    gap: 36px;
+    align-items: center;
+  }
+  @media (max-width: 780px) {
+    .demo-frame { grid-template-columns: 1fr; padding: 32px 24px; }
+  }
+  .demo-copy h2 { font-size: 23px; margin-bottom: 8px; }
+  .demo-copy p { color: var(--ink-soft); font-size: 14px; max-width: 42ch; margin: 0; }
+  .demo-video {
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    max-height: 520px;
+    background: var(--ink);
+    border-radius: 18px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+  }
+  .demo-video video { width: 100%; height: 100%; object-fit: cover; }
+  .demo-video .demo-pending {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    text-align: center;
+    color: var(--ground);
+    font-size: 13px;
+    font-weight: 600;
+    opacity: 0.7;
+  }
+
+  /* ---------- share / qr ---------- */
+  .share {
+    padding: 10px 0 90px;
+  }
+  .share-card {
+    background: var(--surface-dim);
+    border: 1px solid var(--border);
+    border-radius: 26px;
+    padding: 40px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 36px;
+    align-items: center;
+  }
+  @media (max-width: 700px) {
+    .share-card { grid-template-columns: 1fr; justify-items: center; text-align: center; padding: 32px 24px; }
+  }
+  .qr-tile {
+    width: 132px;
+    height: 132px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 10px;
+    flex-shrink: 0;
+  }
+  .qr-tile svg { width: 100%; height: 100%; }
+  .share-copy h2 {
+    font-size: 23px;
+    margin-bottom: 8px;
+  }
+  .share-copy p {
+    color: var(--ink-soft);
+    font-size: 14px;
+    max-width: 46ch;
+    margin: 0 0 14px;
+  }
+  .share-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-pill);
+    padding: 7px 14px;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--moss);
+    font-family: 'Karla', monospace;
+  }
+
+  /* ---------- footer ---------- */
+  footer.site {
+    border-top: 1px solid var(--border-soft);
+    padding: 40px 0 46px;
+  }
+  .footer-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer-brand .wordmark { margin-bottom: 8px; }
+  .footer-brand p {
+    font-size: 13px;
+    color: var(--ink-faint);
+    max-width: 34ch;
+    margin: 0;
+  }
+  .footer-links {
+    display: flex;
+    gap: 26px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+  .footer-links a { text-decoration: none; color: var(--ink-soft); }
+  .footer-links a:hover { color: var(--sage-deep); }
+  .footer-legal {
+    margin-top: 26px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-soft);
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bubble, .recipe-card { animation-duration: 0.01ms !important; }
+    .cursor { animation: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap bar">
+    <a class="wordmark" href="#top">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M12 21c-4-2.5-7-6-7-10a7 7 0 0 1 14 0c0 4-3 7.5-7 10Z" stroke="#4A6741" stroke-width="1.6"/><path d="M12 21V9" stroke="#4A6741" stroke-width="1.6" stroke-linecap="round"/></svg>
+      MyGail
+    </a>
+    <nav class="site-nav">
+      <a href="#principles">Principles</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-head">
+        <span class="eyebrow"><span class="dot"></span>Pre-launch &middot; early access</span>
+        <h1>You don't need a perfect plan.<br><em>You need dinner.</em></h1>
+        <p class="sub">MyGail is the calm, steady voice in your kitchen — real recipes from what's actually in your fridge, no shame, no spreadsheets. Get in before the doors open.</p>
+      </div>
+
+      <div class="hero-grid">
+        <div class="phone-stage">
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="phone-notch"></div>
+              <div class="phone-header">
+                <div class="phone-avatar"><img src="assets/gail-avatar.png" alt="Gail" /></div>
+                <div>
+                  <div class="name">Gail</div>
+                  <div class="status">here whenever you are</div>
+                </div>
+              </div>
+              <div class="thread" id="thread"></div>
+              <div class="phone-input">
+                <span class="ph">Message Gail…</span>
+                <span class="send"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="signup-card">
+          <h2>Get early access</h2>
+          <p class="lead">Join the list and you'll be one of the first through the door when MyGail opens.</p>
+          <form class="signup" id="signupForm" data-kit-action="https://app.kit.com/forms/9848739/subscriptions">
+            <input type="text" name="fields[first_name]" id="signupName" class="name-field" placeholder="First name (optional)" aria-label="First name" />
+            <div class="field-row">
+              <input type="email" name="email_address" id="signupEmail" placeholder="you@email.com" required aria-label="Email address" />
+              <button class="cta" type="submit">Count me in</button>
+            </div>
+            <p class="form-note" id="signupNote" role="status" aria-live="polite"></p>
+          </form>
+          <p class="fine-print">One email when we launch. No newsletter you didn't ask for, no sharing your address around. We'll send a quick confirmation email first.</p>
+
+          <div class="signup-divider"></div>
+
+          <div class="signup-facts">
+            <div class="fact">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Recipes built from what's already in your kitchen
+            </div>
+            <div class="fact">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              A companion that talks like a person, not a template
+            </div>
+            <div class="fact">
+              <svg viewBox="0 0 24 24" fill="none"><path d="M5 13l4 4L19 7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Early access opens before the public launch
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="principles" id="principles">
+    <div class="wrap">
+      <div class="section-head">
+        <span class="eyebrow"><span class="dot"></span>How we operate</span>
+        <h2>The rules Gail doesn't break.</h2>
+        <p>Not a values slide — this is what actually governs how Gail is allowed to talk to you, built into the product itself.</p>
+      </div>
+      <div class="principle-grid">
+        <div class="principle-card">
+          <h3>We tell you the truth</h3>
+          <p>No invented facts, no guaranteed results. If the evidence is mixed, Gail says so instead of pretending certainty.</p>
+        </div>
+        <div class="principle-card">
+          <h3>No bodies are wrong here</h3>
+          <p>No shaming, no judgment. Every body, background, and history gets treated with the same respect.</p>
+        </div>
+        <div class="principle-card">
+          <h3>We're not your doctor</h3>
+          <p>Gail doesn't diagnose or override treatment. When something's medical, she'll say so and point you to a real professional.</p>
+        </div>
+        <div class="principle-card">
+          <h3>Small steps count</h3>
+          <p>Sustainable beats extreme. Gail favors the change you'll actually keep doing over the plan that looks impressive for a week.</p>
+        </div>
+        <div class="principle-card">
+          <h3>Struggling isn't a character flaw</h3>
+          <p>Stress eating, low energy, off weeks — normal parts of being a person, never treated as a moral failure.</p>
+        </div>
+      </div>
+      <p class="principle-source">— drawn directly from the same rules that shape every reply Gail gives you.</p>
+    </div>
+  </section>
+
+  <section class="demo">
+    <div class="wrap">
+      <div class="demo-frame">
+        <div class="demo-copy">
+          <span class="eyebrow"><span class="dot"></span>See it for real</span>
+          <h2>Watch MyGail in your kitchen.</h2>
+          <p>A real run through Gail — asking what's in the fridge, getting a recipe back, cooking it. No script.</p>
+        </div>
+        <!--
+          Video pending. Swap the div below for:
+          <video controls poster="assets/demo-poster.jpg" preload="none">
+            <source src="assets/demo.mp4" type="video/mp4">
+          </video>
+          Use a real screen recording trimmed to ~20-40s and compressed
+          (the raw Desktop recordings are 35-280MB — way too big to ship on
+          a landing page; run them through ffmpeg / HandBrake first).
+        -->
+        <div class="demo-video">
+          <div class="demo-pending">Demo video coming soon</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="share">
+    <div class="wrap">
+      <div class="share-card">
+        <div class="qr-tile" aria-hidden="true" id="qrTile"></div>
+        <div class="share-copy">
+          <h2>Bring someone with you</h2>
+          <p>Scan it, send it, pin it up — every early sign-up moves MyGail closer to launch day.</p>
+          <span class="share-tag">mygail.com/?src=friend</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="footer-row">
+      <div class="footer-brand">
+        <a class="wordmark" href="#top">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21c-4-2.5-7-6-7-10a7 7 0 0 1 14 0c0 4-3 7.5-7 10Z" stroke="#4A6741" stroke-width="1.6"/><path d="M12 21V9" stroke="#4A6741" stroke-width="1.6" stroke-linecap="round"/></svg>
+          MyGail
+        </a>
+        <p>Gail Coins, recipes, and everything else here are still growing — this page is the seed.</p>
+      </div>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="mailto:support@mygail.com">Support</a>
+      </div>
+    </div>
+    <div class="footer-legal">
+      <span>&copy; 2026 MyGail. All rights reserved.</span>
+      <span>support@mygail.com</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var thread = document.getElementById('thread');
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  var script = [
+    { role: 'user', text: "i have literally nothing at home and i'm starving" },
+    { role: 'gail', text: "Okay — let's make this easy, not perfect. What's actually in your kitchen right now?" },
+    { role: 'user', text: 'eggs, half an onion, some leftover rice' },
+    { role: 'gail', text: "That's dinner, actually." },
+    { role: 'recipe' },
+    { role: 'gail', text: "You don't need a perfect plan today. You need dinner. This is dinner." }
+  ];
+
+  function makeRecipeCard() {
+    var el = document.createElement('div');
+    el.className = 'recipe-card';
+    el.innerHTML =
+      '<span class="tag">Dinner</span>' +
+      '<div class="name">Fridge-Raid Fried Rice</div>' +
+      '<div class="meta"><span>12 min</span><span>&middot;</span><span>1 pan</span><span>&middot;</span><span>High-Protein</span></div>';
+    return el;
+  }
+
+  function makeBubble(role) {
+    var el = document.createElement('div');
+    el.className = 'bubble ' + role;
+    return el;
+  }
+
+  var cancelled = false;
+
+  function wait(ms) {
+    return new Promise(function (resolve) {
+      var id = setTimeout(resolve, ms);
+      if (cancelled) clearTimeout(id);
+    });
+  }
+
+  function typeInto(el, text) {
+    return new Promise(function (resolve) {
+      if (reduced) {
+        el.textContent = text;
+        resolve();
+        return;
+      }
+      var i = 0;
+      var cursor = document.createElement('span');
+      cursor.className = 'cursor';
+      function step() {
+        if (cancelled) { resolve(); return; }
+        el.textContent = text.slice(0, i);
+        el.appendChild(cursor);
+        if (i >= text.length) { cursor.remove(); resolve(); return; }
+        i++;
+        setTimeout(step, 14 + Math.random() * 22);
+      }
+      step();
+    });
+  }
+
+  function trimThread() {
+    while (thread.children.length > 4) {
+      thread.removeChild(thread.firstChild);
+    }
+  }
+
+  async function run() {
+    while (!cancelled) {
+      thread.innerHTML = '';
+      for (var i = 0; i < script.length; i++) {
+        var turn = script[i];
+        if (turn.role === 'recipe') {
+          thread.appendChild(makeRecipeCard());
+          await wait(reduced ? 300 : 700);
+        } else {
+          var bubble = makeBubble(turn.role);
+          thread.appendChild(bubble);
+          trimThread();
+          await typeInto(bubble, turn.text);
+          await wait(reduced ? 250 : 380);
+        }
+      }
+      await wait(reduced ? 1400 : 2600);
+    }
+  }
+
+  run();
+})();
+
+// Illustrative QR tile — decorative until a real short link/QR is generated.
+(function () {
+  var tile = document.getElementById('qrTile');
+  var size = 21, cell = 100 / size;
+  var svg = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">';
+  svg += '<rect width="100" height="100" fill="#FDFBF7"/>';
+
+  function finder(x, y) {
+    return '<rect x="' + x + '" y="' + y + '" width="' + (cell * 7) + '" height="' + (cell * 7) + '" fill="#3F3D34"/>' +
+      '<rect x="' + (x + cell) + '" y="' + (y + cell) + '" width="' + (cell * 5) + '" height="' + (cell * 5) + '" fill="#FDFBF7"/>' +
+      '<rect x="' + (x + cell * 2) + '" y="' + (y + cell * 2) + '" width="' + (cell * 3) + '" height="' + (cell * 3) + '" fill="#3F3D34"/>';
+  }
+  svg += finder(0, 0);
+  svg += finder(100 - cell * 7, 0);
+  svg += finder(0, 100 - cell * 7);
+
+  var seed = 42;
+  function rand() { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return (seed % 1000) / 1000; }
+
+  for (var r = 0; r < size; r++) {
+    for (var c = 0; c < size; c++) {
+      var inFinder =
+        (r < 8 && c < 8) || (r < 8 && c > size - 9) || (r > size - 9 && c < 8);
+      if (inFinder) continue;
+      if (rand() > 0.58) {
+        svg += '<rect x="' + (c * cell) + '" y="' + (r * cell) + '" width="' + cell + '" height="' + cell + '" fill="#4A6741"/>';
+      }
+    }
+  }
+  svg += '</svg>';
+  tile.innerHTML = svg;
+})();
+
+// Kit signup wiring — live form (form id 9848739, "HELP US SHAPE MYGAIL").
+// Uses Kit's v3 public API key via the JSON subscribe endpoint instead of a
+// blind no-cors form POST, so we can show a real success/failure instead of
+// always assuming it worked. This key is Kit's "API Key" (not "API Secret") —
+// it's the type explicitly meant to be safe in client-side code: it can
+// subscribe someone to a form and read public form/sequence names, but can't
+// read subscriber lists, billing, or account settings. Kit uses double
+// opt-in, so success here means a confirmation email just went out, not an
+// instant subscribe.
+(function () {
+  var KIT_API_KEY = 'fK-yId8lSdQO6EtC6JzOCw';
+  var KIT_FORM_ID = '9848739';
+
+  var form = document.getElementById('signupForm');
+  var nameInput = document.getElementById('signupName');
+  var emailInput = document.getElementById('signupEmail');
+  var note = document.getElementById('signupNote');
+  var button = form.querySelector('button.cta');
+
+  function setNote(text, kind) {
+    note.textContent = text;
+    note.className = 'form-note' + (kind ? ' ' + kind : '');
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    var email = emailInput.value.trim();
+    if (!email) return;
+    var name = nameInput.value.trim();
+
+    button.disabled = true;
+    setNote('Sending…');
+
+    try {
+      var resp = await fetch('https://api.convertkit.com/v3/forms/' + KIT_FORM_ID + '/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          api_key: KIT_API_KEY,
+          email: email,
+          first_name: name || undefined
+        })
+      });
+      var data = await resp.json().catch(function () { return {}; });
+
+      if (resp.ok && data.subscription) {
+        setNote('Almost there — check your email to confirm.', 'ok');
+        form.reset();
+      } else {
+        setNote(data.message || "Couldn't sign you up — check the email and try again.", 'err');
+      }
+    } catch (err) {
+      setNote("Something went wrong — try again in a moment.", 'err');
+    } finally {
+      button.disabled = false;
+    }
+  });
+})();
+</script>
+</body>
+</html>
