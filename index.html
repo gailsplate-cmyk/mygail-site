@@ -205,6 +205,18 @@
     border-radius: var(--radius-pill);
     background: rgba(63,61,52,0.14);
     margin-bottom: 14px;
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+  }
+  .phone-real-shot {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    z-index: 1;
   }
   .phone-header {
     display: flex;
@@ -700,18 +712,7 @@
           <div class="phone">
             <div class="phone-screen">
               <div class="phone-notch"></div>
-              <div class="phone-header">
-                <div class="phone-avatar"><img src="assets/gail-avatar.png" alt="Gail" /></div>
-                <div>
-                  <div class="name">Gail</div>
-                  <div class="status">here whenever you are</div>
-                </div>
-              </div>
-              <div class="thread" id="thread"></div>
-              <div class="phone-input">
-                <span class="ph">Message Gail…</span>
-                <span class="send"></span>
-              </div>
+              <img class="phone-real-shot" src="assets/home-screenshot.jpg" alt="MyGail Home screen — real screenshot of the app" />
             </div>
           </div>
         </div>
@@ -845,95 +846,6 @@
 </footer>
 
 <script>
-(function () {
-  var thread = document.getElementById('thread');
-  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  var script = [
-    { role: 'user', text: "i have literally nothing at home and i'm starving" },
-    { role: 'gail', text: "Okay — let's make this easy, not perfect. What's actually in your kitchen right now?" },
-    { role: 'user', text: 'eggs, half an onion, some leftover rice' },
-    { role: 'gail', text: "That's dinner, actually." },
-    { role: 'recipe' },
-    { role: 'gail', text: "You don't need a perfect plan today. You need dinner. This is dinner." }
-  ];
-
-  function makeRecipeCard() {
-    var el = document.createElement('div');
-    el.className = 'recipe-card';
-    el.innerHTML =
-      '<span class="tag">Dinner</span>' +
-      '<div class="name">Fridge-Raid Fried Rice</div>' +
-      '<div class="meta"><span>12 min</span><span>&middot;</span><span>1 pan</span><span>&middot;</span><span>High-Protein</span></div>';
-    return el;
-  }
-
-  function makeBubble(role) {
-    var el = document.createElement('div');
-    el.className = 'bubble ' + role;
-    return el;
-  }
-
-  var cancelled = false;
-
-  function wait(ms) {
-    return new Promise(function (resolve) {
-      var id = setTimeout(resolve, ms);
-      if (cancelled) clearTimeout(id);
-    });
-  }
-
-  function typeInto(el, text) {
-    return new Promise(function (resolve) {
-      if (reduced) {
-        el.textContent = text;
-        resolve();
-        return;
-      }
-      var i = 0;
-      var cursor = document.createElement('span');
-      cursor.className = 'cursor';
-      function step() {
-        if (cancelled) { resolve(); return; }
-        el.textContent = text.slice(0, i);
-        el.appendChild(cursor);
-        if (i >= text.length) { cursor.remove(); resolve(); return; }
-        i++;
-        setTimeout(step, 14 + Math.random() * 22);
-      }
-      step();
-    });
-  }
-
-  function trimThread() {
-    while (thread.children.length > 4) {
-      thread.removeChild(thread.firstChild);
-    }
-  }
-
-  async function run() {
-    while (!cancelled) {
-      thread.innerHTML = '';
-      for (var i = 0; i < script.length; i++) {
-        var turn = script[i];
-        if (turn.role === 'recipe') {
-          thread.appendChild(makeRecipeCard());
-          await wait(reduced ? 300 : 700);
-        } else {
-          var bubble = makeBubble(turn.role);
-          thread.appendChild(bubble);
-          trimThread();
-          await typeInto(bubble, turn.text);
-          await wait(reduced ? 250 : 380);
-        }
-      }
-      await wait(reduced ? 1400 : 2600);
-    }
-  }
-
-  run();
-})();
-
 // Illustrative QR tile — decorative until a real short link/QR is generated.
 (function () {
   var tile = document.getElementById('qrTile');
