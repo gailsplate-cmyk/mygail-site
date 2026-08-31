@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>MyGail — Get Early Access</title>
-<meta name="description" content="MyGail is a free AI cooking companion app. Tell Gail what's in your kitchen and she turns it into a real recipe — no meal-planning spreadsheet, no judgment. Get early access.">
+<meta name="description" content="MyGail is a food companion that starts with you. Tell Gail how you're feeling, what's in your pantry, and how much time you have — she helps you find a meal that fits your day. Join the beta.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..600;1,9..144,500&family=Karla:wght@500;600;700;800&display=swap" rel="stylesheet">
@@ -146,6 +146,14 @@
     margin-bottom: 44px;
   }
   .hero-head .eyebrow { margin-bottom: 18px; }
+  .hero-lead {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    margin: 0 0 14px;
+  }
+  .hero-lead strong { color: var(--sage-deep); font-weight: 600; }
   .hero-head h1 {
     font-size: clamp(34px, 5.4vw, 54px);
     line-height: 1.06;
@@ -612,7 +620,7 @@
     padding: 10px;
     flex-shrink: 0;
   }
-  .qr-tile svg { width: 100%; height: 100%; }
+  .qr-tile img { width: 100%; height: 100%; display: block; }
   .share-copy h2 {
     font-size: 23px;
     margin-bottom: 8px;
@@ -702,9 +710,10 @@
   <section class="hero">
     <div class="wrap">
       <div class="hero-head">
-        <span class="eyebrow"><span class="dot"></span>Your AI cooking companion &middot; early access</span>
+        <span class="eyebrow"><span class="dot"></span>Early access</span>
+        <p class="hero-lead">A food companion that starts with you. <strong>Meet Gail.</strong></p>
         <h1>You don't need a perfect plan.<br><em>You need dinner.</em></h1>
-        <p class="sub">MyGail is a free app where Gail — your AI cooking companion — turns whatever's already in your kitchen into a real recipe. Tell her what you've got, get dinner back. No meal-planning spreadsheet, no judgment about what's in your fridge.</p>
+        <p class="sub">MyGail is a food companion that starts with you. Tell Gail how you're feeling, what you have in your pantry, and how much time you have. She helps you find a meal that fits your day — without the stress of figuring it all out yourself.</p>
       </div>
 
       <div class="hero-grid">
@@ -719,8 +728,8 @@
 
         <div class="signup-card">
           <h2>Get early access</h2>
-          <p class="lead">Join the list and you'll be one of the first through the door when MyGail opens.</p>
-          <form class="signup" id="signupForm" data-kit-action="https://app.kit.com/forms/9848739/subscriptions">
+          <p class="lead">Join the beta and be among the first to meet Gail.</p>
+          <form class="signup" id="signupForm" action="https://app.kit.com/forms/9848739/subscriptions" method="post">
             <input type="text" name="fields[first_name]" id="signupName" class="name-field" placeholder="First name (optional)" aria-label="First name" />
             <div class="field-row">
               <input type="email" name="email_address" id="signupEmail" placeholder="you@email.com" required aria-label="Email address" />
@@ -755,8 +764,8 @@
     <div class="wrap">
       <div class="section-head">
         <span class="eyebrow"><span class="dot"></span>How we operate</span>
-        <h2>The rules Gail doesn't break.</h2>
-        <p>Not a values slide — this is what actually governs how Gail is allowed to talk to you, built into the product itself.</p>
+        <h2>How Gail treats you.</h2>
+        <p>Gail is here to help, never to judge.</p>
       </div>
       <div class="principle-grid">
         <div class="principle-card">
@@ -764,8 +773,8 @@
           <p>No invented facts, no guaranteed results. If the evidence is mixed, Gail says so instead of pretending certainty.</p>
         </div>
         <div class="principle-card">
-          <h3>No bodies are wrong here</h3>
-          <p>No shaming, no judgment. Every body, background, and history gets treated with the same respect.</p>
+          <h3>There are no "bad" choices here</h3>
+          <p>No shame. No guilt. No judgment about what you eat or how you eat.</p>
         </div>
         <div class="principle-card">
           <h3>We're not your doctor</h3>
@@ -811,7 +820,9 @@
   <section class="share">
     <div class="wrap">
       <div class="share-card">
-        <div class="qr-tile" aria-hidden="true" id="qrTile"></div>
+        <a class="qr-tile" href="https://mygail.com/?src=friend" aria-label="Open the MyGail early access page">
+          <img src="assets/mygail-friend-qr.svg" alt="QR code for the MyGail early access page" />
+        </a>
         <div class="share-copy">
           <h2>Bring someone with you</h2>
           <p>Scan it, send it, pin it up — every early sign-up moves MyGail closer to launch day.</p>
@@ -846,54 +857,10 @@
 </footer>
 
 <script>
-// Illustrative QR tile — decorative until a real short link/QR is generated.
+// Kit signup wiring — live form 9848739. This uses Kit's credential-free
+// public form endpoint; confirmation and welcome emails are configured in Kit.
 (function () {
-  var tile = document.getElementById('qrTile');
-  var size = 21, cell = 100 / size;
-  var svg = '<svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">';
-  svg += '<rect width="100" height="100" fill="#FDFBF7"/>';
-
-  function finder(x, y) {
-    return '<rect x="' + x + '" y="' + y + '" width="' + (cell * 7) + '" height="' + (cell * 7) + '" fill="#3F3D34"/>' +
-      '<rect x="' + (x + cell) + '" y="' + (y + cell) + '" width="' + (cell * 5) + '" height="' + (cell * 5) + '" fill="#FDFBF7"/>' +
-      '<rect x="' + (x + cell * 2) + '" y="' + (y + cell * 2) + '" width="' + (cell * 3) + '" height="' + (cell * 3) + '" fill="#3F3D34"/>';
-  }
-  svg += finder(0, 0);
-  svg += finder(100 - cell * 7, 0);
-  svg += finder(0, 100 - cell * 7);
-
-  var seed = 42;
-  function rand() { seed = (seed * 1103515245 + 12345) & 0x7fffffff; return (seed % 1000) / 1000; }
-
-  for (var r = 0; r < size; r++) {
-    for (var c = 0; c < size; c++) {
-      var inFinder =
-        (r < 8 && c < 8) || (r < 8 && c > size - 9) || (r > size - 9 && c < 8);
-      if (inFinder) continue;
-      if (rand() > 0.58) {
-        svg += '<rect x="' + (c * cell) + '" y="' + (r * cell) + '" width="' + cell + '" height="' + cell + '" fill="#4A6741"/>';
-      }
-    }
-  }
-  svg += '</svg>';
-  tile.innerHTML = svg;
-})();
-
-// Kit signup wiring — live form (form id 9848739, "HELP US SHAPE MYGAIL").
-// Uses Kit's v3 public API key via the JSON subscribe endpoint instead of a
-// blind no-cors form POST, so we can show a real success/failure instead of
-// always assuming it worked. This key is Kit's "API Key" (not "API Secret") —
-// it's the type explicitly meant to be safe in client-side code: it can
-// subscribe someone to a form and read public form/sequence names, but can't
-// read subscriber lists, billing, or account settings. Kit uses double
-// opt-in, so success here means a confirmation email just went out, not an
-// instant subscribe.
-(function () {
-  var KIT_API_KEY = 'fK-yId8lSdQO6EtC6JzOCw';
-  var KIT_FORM_ID = '9848739';
-
   var form = document.getElementById('signupForm');
-  var nameInput = document.getElementById('signupName');
   var emailInput = document.getElementById('signupEmail');
   var note = document.getElementById('signupNote');
   var button = form.querySelector('button.cta');
@@ -908,26 +875,22 @@
 
     var email = emailInput.value.trim();
     if (!email) return;
-    var name = nameInput.value.trim();
-
     button.disabled = true;
     setNote('Sending…');
 
     try {
-      var resp = await fetch('https://api.convertkit.com/v3/forms/' + KIT_FORM_ID + '/subscribe', {
+      var resp = await fetch(form.action, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          api_key: KIT_API_KEY,
-          email: email,
-          first_name: name || undefined
-        })
+        headers: { 'Accept': 'application/json' },
+        body: new FormData(form)
       });
       var data = await resp.json().catch(function () { return {}; });
 
-      if (resp.ok && data.subscription) {
+      if (resp.ok && data.status === 'success') {
         setNote('Almost there — check your email to confirm.', 'ok');
         form.reset();
+      } else if (resp.ok && data.status === 'quarantined' && data.url) {
+        window.location.assign(data.url);
       } else {
         setNote(data.message || "Couldn't sign you up — check the email and try again.", 'err');
       }
